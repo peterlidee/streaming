@@ -11,6 +11,7 @@ type Props = {
 export default function Page({ params }: Props) {
   return (
     <div>
+      <h2>Page {params.pageId}</h2>
       <ol>
         <Suspense
           fallback={

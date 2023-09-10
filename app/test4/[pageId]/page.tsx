@@ -14,7 +14,7 @@ export async function generateStaticParams() {
 export default function Page({ params }: Props) {
   return (
     <div>
-      <h1>Page {params.pageId}</h1>
+      <h2>Page {params.pageId}</h2>
       <ol>
         <StaticPost delay={0} />
         <StaticPost delay={300} />
