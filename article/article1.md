@@ -108,7 +108,7 @@ type Props = {
 export default function Page({ params }: Props) {
   return (
     <div>
-      <h1>Page {params.pageId}</h1>
+      <h2>Page {params.pageId}</h2>
       <ol>
         <Post delay={0} />
         <Post delay={300} />
@@ -123,7 +123,7 @@ export default function Page({ params }: Props) {
 
 So this page makes 5 request that will have a combined delay of 3000 milliseconds. This gives us ample time to observe loading mechanisms in between page transitions. I added links to different page routes using the layout file.
 
-[insert image]
+[insert image 1]
 
 Finally, the different links to _test 1_, _test 2_,... all use the same dynamic page with different loading mechanics:
 
@@ -208,8 +208,8 @@ How does this route behave? When we go from `/test2` to `/test2/1` 3 things happ
 
 1. The url in the browser address bar immediately updates to `http://localhost:3000/test2/1`.
 2. A loading state ('loading...' in red) is displayed below the pages links
-   [insert image]
-3. After about 3 seconds the page updates: it shows the page title: page 1 and a new series of post titles. [insert image]
+   [insert image 2]
+3. After about 3 seconds the page updates: it shows the page title: page 1 and a new series of post titles. [insert image 3]
 
 When navigating to other pages in this test, the same happens. The url in the browser changes, the title and ol are replaced with the red 'loading...' text. After 3-ish seconds new data renders.
 
@@ -293,7 +293,7 @@ Let's build our example `/test3`. It's the same as `/test2` but we remove `loadi
 export default function Profile({ params }: Props) {
   return (
     <div>
-      <h1>Test 3: Page {params.pageId}</h1>
+      <h2>Page {params.pageId}</h2>
       <ol>
         <Suspense fallback={<Loader />}>
           <li><Post delay={0} /></li>
@@ -320,9 +320,10 @@ As you can see, we simply wrapped each `<Post />` in a `Suspense` boundary with 
 
 - The url in the browser address bar changes immediately.
 - The page title `<h1>Page X</h1>` is rendered immediately.
-- We see an ordered list with all items 'Loading...' and then one by one they get filled in with an actual post title.
-
-[insert image(s)]
+- We see an ordered list with all items 'Loading...'
+  [insert image 4]
+- One by one they get filled in with an actual post title.
+  [insert image 5]
 
 Even in a very basic example like this, it is a clear ux improvement. On top of that it also has benefits for SEO as it leads to better TTFB, FCP and TTI.
 
@@ -334,4 +335,4 @@ Even in a very basic example like this, it is a clear ux improvement. On top of 
 
 On top of that, `Next` also provides us with the template file `loading.js`. This automatically wraps components with `Suspense` for us. But, it can only be used as part of the `app router` file system.
 
-In the second part of this article we will be exploring loading states in client components and static rendering.
+In the [second part](todo) of this article we will be exploring loading states in client components and static rendering.
