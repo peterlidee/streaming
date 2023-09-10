@@ -140,10 +140,6 @@ Well, what happens is that `Next` only prefetches links that are inside the view
 
 I can't explain this. I fully expected it to work. After some testing and trying I eventually managed to get a loading state by adding a `loading.js` in the `/test4` folder. (I used a green loading text so I could tell the difference.)
 
-[insert image 7]
-
-[insert image 8]
-
 ```
 /test4
     page.tsx
@@ -154,6 +150,14 @@ I can't explain this. I fully expected it to work. After some testing and trying
         loading.tsx   (Does not work)
 ```
 
+Loading:
+
+[insert image 7]
+
+After loading:
+
+[insert image 8]
+
 Unfortunately I can't explain this. Is this normal behavior or a bug? I don't know. I expected 'normal' behavior for non-prefetched routes, similar to dynamic routes. This did not happen and I can't explain why.
 
 What I can say it that our pages 11 to 15, after being visited did appear in our build folder - as expected.
@@ -162,7 +166,7 @@ What I can say it that our pages 11 to 15, after being visited did appear in our
 
 One last note. `Next` has been updating a lot of its docs lately and while doing some research for this article, I came across some new info. Earlier in this article we talked about dynamic and static server-side rendering.
 
-But in the [recently updated docs](<(https://nextjs.org/docs/app/building-your-application/rendering/server-components)>), `Next` now mentions 3 types of server-side rendering:
+But in the [recently updated docs](https://nextjs.org/docs/app/building-your-application/rendering/server-components), `Next` now mentions 3 types of server-side rendering:
 
 1. Static: default.
 2. Dynamic: when using dynamic functions or dynamic fetches.

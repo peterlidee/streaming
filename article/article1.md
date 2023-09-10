@@ -335,4 +335,4 @@ Even in a very basic example like this, it is a clear ux improvement. On top of 
 
 On top of that, `Next` also provides us with the template file `loading.js`. This automatically wraps components with `Suspense` for us. But, it can only be used as part of the `app router` file system.
 
-In the [second part](todo) of this article we will be exploring loading states in client components and static rendering.
+In the second part of this article we will be exploring loading states in client components and static rendering.
