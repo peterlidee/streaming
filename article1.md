@@ -9,6 +9,8 @@ In this article I will explain why they are useful, when and where to use them a
 
 ## The setup
 
+This is what we will be building. All files are available on [github]()
+
 [insert image]
 
 We created a new project using `create-next-app` with `TypeScript` and `Eslint`, cleaned out the boilerplate and build a project using the `app router` of course.
@@ -65,8 +67,6 @@ return <li>{post.title}</li>;
 
 For the fetch itself, we use the `{ cache: 'no-store' }` option. This tells `Next` to use dynamic fetching: don't use cache, refetch on each request. (similar to `getServerSideProps`).
 
-**Note**: we will come back to this later.
-
 Finally, we call a `pauseFunction` and we pass it a delay parameter (time in milliseconds). This function returns a promise that gets resolved after `delay` seconds.
 
 ```ts
@@ -88,7 +88,7 @@ The only thing this function does is pause the component as we call it:
 const pause = await pauseFunction(delay);
 ```
 
-Why, so the component takes longer to load and we can observe the loading state better.
+Why? So the component takes longer to load and we can observe the loading state better.
 
 In short, `<Post delay={1000} />` makes a dynamic (non cached) fetch and retrieves a random post from the jsonplaceholder api. It then pauses for x milliseconds and finally returns the `post.title`.
 
@@ -105,7 +105,7 @@ type Props = {
   };
 };
 
-export default function Profile({ params }: Props) {
+export default function Page({ params }: Props) {
   return (
     <div>
       <h1>Page {params.pageId}</h1>
@@ -125,7 +125,7 @@ So this page makes 5 request that will have a combined delay of 3000 millisecond
 
 [insert image]
 
-Finally, the different _base_ routes: `/test1`, `/test2`, `/test3`, ... all use the same dynamic page with different loading mechanics:
+Finally, the different links to _test 1_, _test 2_,... all use the same dynamic page with different loading mechanics:
 
 - `/test1` has no loading mechanic
 - `/test2` uses `loading.ts`
@@ -140,10 +140,10 @@ Let us start with no loading mechanics. We use route `/test1` for this example:
 
 ```
 /test1
-    page.tsx      (empty file, returns null)
-    layout.tsx    (<h1>Test 1</h1> and links to page 1-5)
+    page.tsx
+    layout.tsx
     /[pageId]
-        page.tsx  (<h1>Page {pageId}</h1> and 5 <Post />'s)
+        page.tsx  (5 <Post />'s)
 ```
 
 What happens when we are on `/test1` and we click page 1 which will navigate us to `/test1/1`? Remember, the dynamic page loads `<Post />` 5 times. `<Post />` makes a fetch and calls the `pauseFunction`. The combined paused time is 3 seconds.
@@ -209,7 +209,7 @@ How does this route behave? When we go from `/test2` to `/test2/1` 3 things happ
 1. The url in the browser address bar immediately updates to `http://localhost:3000/test2/1`.
 2. A loading state ('loading...' in red) is displayed below the pages links
    [insert image]
-3. After about 3 seconds, the page updates show the page title: page 1 and a new series of post titles. [insert image]
+3. After about 3 seconds the page updates: it shows the page title: page 1 and a new series of post titles. [insert image]
 
 When navigating to other pages in this test, the same happens. The url in the browser changes, the title and ol are replaced with the red 'loading...' text. After 3-ish seconds new data renders.
 
@@ -220,7 +220,8 @@ How does `Next` do this? By using `Suspense` boundary.
 ## Suspense
 
 > `Suspense` works by wrapping a component that performs an asynchronous action (e.g. fetch data), showing fallback UI (e.g. skeleton, spinner) while it's happening, and then swapping in your component once the action completes.
-> source: [next docs](https://nextjs.org/docs/app/building-your-application/routing/loading-ui-and-streaming#example)
+>
+> Source: [next docs](https://nextjs.org/docs/app/building-your-application/routing/loading-ui-and-streaming#example)
 
 Here is an example:
 
@@ -327,8 +328,10 @@ Even in a very basic example like this, it is a clear ux improvement. On top of 
 
 ## Conclusion
 
-`Next 13` shifts more responsibilities server-side. But, this shift has drawbacks. In this article we looked into how a server-side fetch is render blocking.
+`Next 13` shifted more responsibilities server-side. But, this shift has drawbacks. In this article we looked into how a server-side fetch is render blocking.
 
 `Next`/`React` provides us with the `Suspense` boundary to handle this issue. `Suspense` wraps a component that performs an asynchronous action (like fetching data), shows a fallback component while it loads and the wrapped component when the loading is complete.
 
 On top of that, `Next` also provides us with the template file `loading.js`. This automatically wraps components with `Suspense` for us. But, it can only be used as part of the `app router` file system.
+
+In the second part of this article we will be exploring loading states in client components and static rendering.
