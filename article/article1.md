@@ -9,9 +9,9 @@ In this article I will explain why they are useful, when and where to use them a
 
 ## The setup
 
-This is what we will be building. All files are available on [github]()
+This is what we will be building. All files are available on [github](TODO)
 
-[insert image]
+[insert image 1]
 
 We created a new project using `create-next-app` with `TypeScript` and `Eslint`, cleaned out the boilerplate and build a project using the `app router` of course.
 
