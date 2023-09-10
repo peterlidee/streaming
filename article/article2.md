@@ -24,7 +24,7 @@ We've been using dynamic fetches (with option `{ cache: 'no-store }`). This opts
 
 Static rendering works differently. The route gets prerendered - server-side - at build time. When the user requests a page, the server serves this prerendered page. The prerendering has already been done. Static rendering is the default in `Next`. Every render is static except when `Next` encounters a dynamic fetch (see above) or dynamic functions (like `headers()` or `cookies()`).
 
-Let's test this out. We will make a new route `/test4` but base our project on `/test2` (the one with `loading.js`). (All files are available on [github](TODO))
+Let's test this out. We will make a new route `/test4` but base our project on `/test2` (the one with `loading.js`). (All files are available on [github](https://github.com/peterlidee/streaming))
 
 As we are working with dynamic pages we need to tell our app what pages we want to generate using the `generateStaticParams` function. (This replaces `getStaticPaths`):
 
@@ -180,6 +180,6 @@ That means that we've been talking about `streaming` the whole time. Does this c
 
 I can't offer a conclusion about static rendering as I don't know. So instead I will end this bonus chapter in a challenge.
 
-I setup the example, and it is available on [github](TODO). Give it your best shot and see if any of you can explain why `loading.js` is not working as intended in not prerendered, not prefetched routes.
+I setup the example, and it is available on [github](https://github.com/peterlidee/streaming). Give it your best shot and see if any of you can explain why `loading.js` is not working as intended in not prerendered, not prefetched routes.
 
 As far as using loading mechanics in your own SSG projects. As I am not sure this is a bug or not, I would say, be very careful.

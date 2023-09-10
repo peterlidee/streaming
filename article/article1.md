@@ -9,7 +9,7 @@ In this article I will explain why they are useful, when and where to use them a
 
 ## The setup
 
-This is what we will be building. All files are available on [github](TODO)
+This is what we will be building. All files are available on [github](https://github.com/peterlidee/streaming).
 
 [insert image 1]
 
