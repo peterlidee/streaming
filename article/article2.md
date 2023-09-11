@@ -182,7 +182,7 @@ That means that we've been talking about `streaming` the whole time. Does this c
 
 ## ~~Conclusion~~ Challenge
 
-I can't offer a conclusion about static rendering as I don't know. So instead I will end this bonus chapter in a challenge.
+I can't offer a conclusion so instead I will end this bonus chapter in a challenge.
 
 I setup the example, and it is available on [github](https://github.com/peterlidee/streaming). Give it your best shot and see if any of you can explain why `loading.js` is not working as intended in not prerendered, not prefetched routes.
 
