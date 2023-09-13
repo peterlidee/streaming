@@ -180,7 +180,7 @@ This means there is caching.
 
 I don't know. This was unexpected for me as well. Maybe it's a micro optimization from `Next` but I couldn't find any data on it. Anyway, back to loading mechanics.
 
-Update: This has is caused by what `Next` calls [router cache](https://nextjs.org/docs/app/building-your-application/caching#duration-3). Dynamically rendered routes has a router cache duration of 30 seconds.
+Update: This is caused by what `Next` calls [router cache](https://nextjs.org/docs/app/building-your-application/caching#duration-3). Dynamically rendered routes has a router cache duration of 30 seconds.
 
 ## loading.tsx (.js)
 
